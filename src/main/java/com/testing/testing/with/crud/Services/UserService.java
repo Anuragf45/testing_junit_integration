@@ -32,23 +32,23 @@ public class UserService {
 
     public ResponseEntity<?> createUser(UserModel user){
         logger.info("Checking for existing userName");
-        Optional<UserModel> userWithUserName = userRepository.findByUserName(user.getUserName());
-        if(userWithUserName.isPresent()) {
-            logger.error("UserName already exists");
-            return new ResponseEntity<>("User already exists. Please give another one.", HttpStatus.BAD_REQUEST);
-        }
-        logger.info("checking for existing email");
-        Optional<UserModel> userWithEmail = userRepository.findByEmail(user.getEmail());
-        if(userWithEmail.isPresent()){
-            logger.error("Email already exists");
-            return new ResponseEntity<>("Email already exists. Please give another one.",HttpStatus.BAD_REQUEST);
-        }
-        logger.info("checking for existing mobile number");
-        Optional<UserModel> userWithMobile = userRepository.findByMobileNumber(user.getMobileNumber());
-        if(userWithMobile.isPresent()){
-            logger.error("Mobile number already exists");
-            return new ResponseEntity<>("Mobile number already exists. Please give another one.",HttpStatus.BAD_REQUEST);
-        }
+//        Optional<UserModel> userWithUserName = userRepository.findByUserName(user.getUserName());
+//        if(userWithUserName.isPresent()) {
+//            logger.error("UserName already exists");
+//            return new ResponseEntity<>("User already exists. Please give another one.", HttpStatus.BAD_REQUEST);
+//        }
+//        logger.info("checking for existing email");
+//        Optional<UserModel> userWithEmail = userRepository.findByEmail(user.getEmail());
+//        if(userWithEmail.isPresent()){
+//            logger.error("Email already exists");
+//            return new ResponseEntity<>("Email already exists. Please give another one.",HttpStatus.BAD_REQUEST);
+//        }
+//        logger.info("checking for existing mobile number");
+//        Optional<UserModel> userWithMobile = userRepository.findByMobileNumber(user.getMobileNumber());
+//        if(userWithMobile.isPresent()){
+//            logger.error("Mobile number already exists");
+//            return new ResponseEntity<>("Mobile number already exists. Please give another one.",HttpStatus.BAD_REQUEST);
+//        }
         UserModel res = userRepository.save(user);
         logger.info("created new user successfully");
         return new ResponseEntity<>(res,HttpStatus.CREATED);

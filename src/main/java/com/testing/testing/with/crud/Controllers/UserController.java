@@ -31,6 +31,12 @@ public ResponseEntity<?> getAllUsers(){
         logger.info("Giving all the users");
         return userService.getUsers();
     }
+
+    @GetMapping("/getUser/{id}")
+    public  ResponseEntity<?> getUserById(@PathVariable String id){
+        logger.info("Getting user with the given id");
+        return userService.getUserById(id);
+    }
 //    @PostMapping("/createUser")
 //   public UserModel createUser(@RequestBody UserModel model){
 //        UserRepository.save(model);
